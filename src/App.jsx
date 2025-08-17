@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 import PodcastList from "./components/PodcastList/PodcastList";
 import LoginForm from './components/LoginForm/LoginForm';
@@ -8,7 +9,7 @@ import LogoutButton from './components/LogoutButton/LogoutButton';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {
-  const [toke, setToken] = useState(localStorage).getItem('token');
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
   function handleLogin(newToken) {
     setToken(newToken);
