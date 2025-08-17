@@ -16,13 +16,14 @@ const PodcastList = () => {
 
   return (
     <div>
-        <ul>
+        <ul style={{listStyle: "none"}}>
             {
                 podcasts.map(podcast => {
                     return(
                         <>
                         <li>
-                            <p>Podcast: {podcast.title}</p>
+                            <img src={podcast.podcastImage} alt={podcast.title} width="200"/>
+                            <p><strong>{podcast.title}</strong></p>
                             <p>Creator: {podcast.creator}</p>
                         </li>
                         </>
