@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import PodcastList from './components/PodcastList'
+
+import PodcastList from "./components/PodcastList/PodcastList"
+
 function App() {
   return (
     <>
