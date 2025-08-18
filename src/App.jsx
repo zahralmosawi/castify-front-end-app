@@ -37,10 +37,10 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignupForm />} />
-          <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />
-
-          
+          <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />  
+                  
           <Route path="/podcasts/:id" element={<ProtectedRoute><PodcastDetails /></ProtectedRoute>} />
+
         </Routes>
       </div>
     </Router>
