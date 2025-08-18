@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import SignupForm from './components/SignupForm.jsx/SignupForm';
 import LogoutButton from './components/LogoutButton/LogoutButton';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import SideBar from './components/SideBar/SideBar';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -29,6 +30,7 @@ function App() {
     <Router>
       <div>
         {token && <LogoutButton onLogout={handleLogout}/>}
+        {<SideBar/>}
 
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
