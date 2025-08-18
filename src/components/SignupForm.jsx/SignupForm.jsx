@@ -23,14 +23,17 @@ function SignupForm() {
 
         try {
             await axios.post('http://localhost:3000/auth/signup', {
-                username, 
-                password
+                username: formData.username,
+                email: formData.email,
+                password: formData.password,
+                name: formData.name,
+                bio: formData.bio
             });
 
             alert('User registered, please login');
             navigate('/login');
         } catch (error) {
-            alert(err.response?.data?.message || 'Registration failed');
+            alert(error.response?.data?.message || 'Registration failed');
         }
     }
 
