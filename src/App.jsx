@@ -9,7 +9,6 @@ import LogoutButton from './components/LogoutButton/LogoutButton';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import SideBar from './components/SideBar/SideBar';
 import UserProfile from './components/UserProfile/UserProfile';
-
 import PodcastDetails from './components/PodcastDetails/PodcastDetails';
 
 function App() {
@@ -39,9 +38,7 @@ function App() {
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />  
-                  
           <Route path="/podcasts/:id" element={<ProtectedRoute><PodcastDetails /></ProtectedRoute>} />
-
           <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
         </Routes>
