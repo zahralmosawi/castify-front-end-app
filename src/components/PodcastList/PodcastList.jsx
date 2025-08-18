@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router'
 
 const PodcastList = () => {
     const [podcasts, setPodcasts] = useState([])
@@ -27,7 +28,7 @@ const PodcastList = () => {
                     return(
                         <>
                         <li>
-                            <img src={podcast.podcastImage} alt={podcast.title} width="200"/>
+                            <Link to={`/podcasts/${podcast._id}`}><img src={podcast.podcastImage} alt={podcast.title} width="200"/></Link>
                             <p><strong>{podcast.title}</strong></p>
                             <p>Creator: {podcast.creator}</p>
                         </li>
