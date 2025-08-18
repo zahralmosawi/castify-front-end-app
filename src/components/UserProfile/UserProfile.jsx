@@ -54,6 +54,8 @@ function UserProfile() {
                     <p>@{user.username}</p>
                     <p>{user.email}</p>
                     <p>{user.bio}</p>
+
+                    <button onClick={() => navigate('/profile/edit')}>Edit Profile</button>
                 </div>
             </div>
         </>

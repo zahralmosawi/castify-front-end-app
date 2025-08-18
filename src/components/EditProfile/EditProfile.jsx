@@ -10,6 +10,7 @@ function EditProfile() {
         bio: ""
     });
 
+    const [userId, setUserId] = useState(null);
     const [avatarFile, setAvatarFile] = useState(null);
     const [avatarPreview, setAvatarPreview] = useState(null);
     const [saving, setSaving] = useState(false);
@@ -38,6 +39,7 @@ function EditProfile() {
                 });
 
                 setAvatarPreview(res.data.avatar);
+                setUserId(res.data._id);
             } catch (error) {
                 alert(err.response?.data?.error || "Failed to load profile.");
             }
@@ -158,3 +160,4 @@ function EditProfile() {
     )
 }
 
+export default EditProfile;

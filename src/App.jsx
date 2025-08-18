@@ -9,6 +9,7 @@ import LogoutButton from './components/LogoutButton/LogoutButton';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import SideBar from './components/SideBar/SideBar';
 import UserProfile from './components/UserProfile/UserProfile';
+import EditProfile from './components/EditProfile/EditProfile';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -38,6 +39,7 @@ function App() {
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+          <Route path="/profile/edit" element={<EditProfile />} />
         </Routes>
       </div>
     </Router>
