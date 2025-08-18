@@ -8,6 +8,7 @@ import SignupForm from './components/SignupForm.jsx/SignupForm';
 import LogoutButton from './components/LogoutButton/LogoutButton';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import SideBar from './components/SideBar/SideBar';
+
 import PodcastDetails from './components/PodcastDetails/PodcastDetails';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />
+          
           <Route path="/podcasts/:id" element={<ProtectedRoute><PodcastDetails /></ProtectedRoute>} />
         </Routes>
       </div>
