@@ -20,7 +20,7 @@ const PodcastList = () => {
     }, [])
 
   return (
-    <div>
+    <>
         <ul style={{listStyle: "none"}}>
             {
                 podcasts.map(podcast => {
@@ -36,7 +36,7 @@ const PodcastList = () => {
                 })
             }
         </ul>
-    </div>
+    </>
   )
 }
 
