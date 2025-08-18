@@ -6,7 +6,12 @@ const PodcastList = () => {
 
     const getAllPodcast = async () => {
         const url = `${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`
-        const res = await axios.get(url) 
+        const token = localStorage.getItem('token');
+
+        const res = await axios.get(url, {
+            headers: { Authorization: `Bearer ${token}`}
+        }) 
+
         setPodcasts(res.data)
     }
 
@@ -15,7 +20,7 @@ const PodcastList = () => {
     }, [])
 
   return (
-    <div>
+    <>
         <ul style={{listStyle: "none"}}>
             {
                 podcasts.map(podcast => {
@@ -31,7 +36,7 @@ const PodcastList = () => {
                 })
             }
         </ul>
-    </div>
+    </>
   )
 }
 
