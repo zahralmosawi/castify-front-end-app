@@ -8,9 +8,11 @@ import SignupForm from './components/SignupForm.jsx/SignupForm';
 import LogoutButton from './components/LogoutButton/LogoutButton';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import SideBar from './components/SideBar/SideBar';
+import CurrentPlaying from './components/CurrentPlaying/CurrentPlaying';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
+  // const [nowPlaying, setNowPlaying] = useState(null)
 
   function handleLogin(newToken) {
     setToken(newToken);
@@ -35,7 +37,9 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignupForm />} />
-          <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />
+          {/* <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} CurrentPlaying={<CurrentPlaying  nowPlaying={nowPlaying}/>} /> */}
+          {/* <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} CurrentPlaying={<ProtectedRoute><CurrentPlaying  nowPlaying={nowPlaying}/></ProtectedRoute>} /> */}
+          <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>}/>
         </Routes>
       </div>
     </Router>
