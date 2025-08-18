@@ -45,7 +45,7 @@ function UserProfile() {
                     <label className='avatar-wrapper'>
                         <img 
                             id='avatarPreview'
-                            src={user.avatar}
+                            src={user.avatar ? `${import.meta.env.VITE_BACK_END_SERVER_URL}${user.avatar}` : undefined}
                             alt='User Avatar'
                         />
                     </label>

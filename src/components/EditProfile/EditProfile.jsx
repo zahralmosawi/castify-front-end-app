@@ -41,7 +41,7 @@ function EditProfile() {
                 setAvatarPreview(res.data.avatar);
                 setUserId(res.data._id);
             } catch (error) {
-                alert(err.response?.data?.error || "Failed to load profile.");
+                alert(error.response?.data?.error || "Failed to load profile.");
             }
         }
 
@@ -109,12 +109,10 @@ function EditProfile() {
         <>
             <h2>Edit Profile</h2>
 
-            
-
             <form onSubmit={handleSubmit}>
                 <div>
                     <img 
-                        src={avatarPreview}
+                        src={avatarPreview ? `${import.meta.env.VITE_BACK_END_SERVER_URL}${avatarPreview}` : undefined}
                         alt="Avatar Preview" 
                     />
 
