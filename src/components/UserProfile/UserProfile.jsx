@@ -56,6 +56,7 @@ function UserProfile() {
                     <p>{user.bio}</p>
 
                     <button onClick={() => navigate('/profile/edit')}>Edit Profile</button>
+                    <button onClick={() => navigate('/boards/new')}>+ Create New Board</button>
                 </div>
             </div>
         </>
