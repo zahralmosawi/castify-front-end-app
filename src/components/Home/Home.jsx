@@ -6,6 +6,7 @@ function Home() {
     const [featured, setFeatured] = useState([]);
     const [genres, setGenres] = useState({});
     const [continueListening, setContinueListening]= useState([]);
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
     async function getPodcasts() {
@@ -25,16 +26,29 @@ function Home() {
         getPodcasts();
     }, []);
 
+    const filteredPodcasts = podcasts.filter(podcast =>
+        podcast.title.toLowerCase().includes(search.toLowerCase())
+    );
+
     return (
         <>
-            <h2>Featured</h2>
-            <PodcastList boardPodcasts={featured} />
+        <br/><br/>
+            <input type='text' placeholder='Search Podcasts' value={search} onChange={event => setSearch(event.target.value)} />
 
-            <h2>Continue Listening</h2>
-            <PodcastList boardPodcasts={continueListening} />
+            {search.trim() ? (
+                <PodcastList boardPodcasts={filteredPodcasts} />
+            ) : (
+                <>
+                    <h2>Featured</h2>
+                    <PodcastList boardPodcasts={featured} />
 
-            <h2>All Podcasts</h2>
-            <PodcastList boardPodcasts={podcasts} />
+                    <h2>Continue Listening</h2>
+                    <PodcastList boardPodcasts={continueListening} />
+
+                    <h2>All Podcasts</h2>
+                    <PodcastList boardPodcasts={filteredPodcasts} /> 
+                </>
+            )}
         </>
     )
 }
