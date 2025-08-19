@@ -2,23 +2,26 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 
-const PodcastList = () => {
+const PodcastList = ({boardPodcasts}) => {
     const [podcasts, setPodcasts] = useState([])
 
-    const getAllPodcast = async () => {
-        const url = `${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`
-        const token = localStorage.getItem('token');
+    useEffect(() => {
+        if (boardPodcasts && boardPodcasts.length > 0) {
+            setAllPodcasts(boardPodcasts);
+        } else {
+            const getAllPodcast = async () => {
+                const url = `${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`
+                const token = localStorage.getItem('token');
 
-        const res = await axios.get(url, {
-            headers: { Authorization: `Bearer ${token}`}
-        }) 
+                const res = await axios.get(url, {
+                     headers: { Authorization: `Bearer ${token}`}
+                }) 
 
-        setPodcasts(res.data)
-    }
-
-    useEffect(()=>{
-        getAllPodcast()
-    }, [])
+                setPodcasts(res.data)
+            }
+            getAllPodcast();
+        }
+    }, [podcasts])
 
   return (
     <>
