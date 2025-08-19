@@ -5,6 +5,7 @@ function Home() {
     const [podcasts, setPodcasts] = useState([]);
     const [featured, setFeatured] = useState([]);
     const [genres, setGenres] = useState({});
+    const [continueListening, setContinueListening]= useState([]);
 
     useEffect(() => {
     async function getPodcasts() {
@@ -17,16 +18,9 @@ function Home() {
         setPodcasts(data);
         setFeatured(data.slice(0, 3));
 
-        const genreMap = {};
-        data.forEach(podcast => {
-            if (podcast.tags && Array.isArray(podcast.tags)) {
-            podcast.tags.forEach(tag => {
-                if (!genreMap[tag]) genreMap[tag] = [];
-                genreMap[tag].push(podcast);
-            });
-            }
-        });
-        setGenres(genreMap);
+        const progress = JSON.parse(localStorage.getItem('podcastProgress') || '{}');
+        const continueList = data.filter(podcast => progress[podcast._id]);
+        setContinueListening(continueList);
         }
         getPodcasts();
     }, []);
@@ -35,6 +29,9 @@ function Home() {
         <>
             <h2>Featured</h2>
             <PodcastList boardPodcasts={featured} />
+
+            <h2>Continue Listening</h2>
+            <PodcastList boardPodcasts={continueListening} />
 
             <h2>All Podcasts</h2>
             <PodcastList boardPodcasts={podcasts} />

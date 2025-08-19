@@ -33,7 +33,22 @@ const PodcastDetails = () => {
             <p>{podcast.description}</p>
             {
                 podcast.audio_url?.url && (
-                    <audio controls src={podcast.audio_url.url}></audio>
+                    <audio controls src={podcast.audio_url.url} 
+                        onTimeUpdate={event => {
+                            const currentTime = event.target.currentTime;
+                            const duration = event.target.duration;
+
+                            if (duration && currentTime < duration - 5) {
+                                const progress = JSON.parse(localStorage.getItem('podcastProgress') || '{}');
+                                progress[podcast._id] = currentTime;
+                                localStorage.setItem('podcastProgress', JSON.stringify(progress));
+                            } else if (duration && currentTime >= duration - 5) {
+                                const progress = JSON.parse(localStorage.getItem('podcastProgress') || '{}');
+                                delete progress[podcast._id];
+                                localStorage.setItem('podcastProgress', JSON.stringify(progress));
+                            }
+                        }}
+                    ></audio>
                 )
             }
             <button onClick={handlePlay}>
