@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function UserProfile() {
     const [user, setUser] = useState(null);
+    const [boards, setBoards] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -12,7 +13,7 @@ function UserProfile() {
                 const url = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users/profile`;
                 const token = localStorage.getItem('token');
 
-                if(!token) {
+                if (!token) {
                     navigate('/login');
                     return;
                 }
@@ -22,13 +23,20 @@ function UserProfile() {
                 });
 
                 setUser(res.data);
+
+                const boardRes = await axios.get(`${import.meta.env.VITE_BACK_END_SERVER_URL}/boards`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+
+                const userBoards = boardRes.data.filter(board => board.createdBy === res.data._id);
+                setBoards(userBoards);
             } catch (error) {
-                alert(err.response?.data?.error || "Failed to fetch profile");
+                alert(error.response?.data?.error || "Failed to fetch profile");
             }
         }
 
         getProfile();
-    }, [navigate]);
+    }, [navigate])
 
     if (!user) {
         return (
@@ -57,6 +65,25 @@ function UserProfile() {
 
                     <button onClick={() => navigate('/profile/edit')}>Edit Profile</button>
                     <button onClick={() => navigate('/boards/new')}>+ Create New Board</button>
+                </div>
+
+                <div className='boards-list'>
+                    {boards.length === 0 ? (
+                        <p>Start by creating a board</p>
+                    )
+                    :
+                    (
+                        <ul>
+                            {boards.map(board => (
+                                <li key={board._id}>
+                                    <strong>{board.name}</strong>
+                                    <p>{board.description}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    )
+                
+                }
                 </div>
             </div>
         </>

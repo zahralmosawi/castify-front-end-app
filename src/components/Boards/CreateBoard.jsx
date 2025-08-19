@@ -7,7 +7,7 @@ function CreateBoard() {
         name: '',
         description: '',
         isPublic: false,
-        tage: ''
+        tags: ''
     });
 
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ function CreateBoard() {
         try {
             const token = localStorage.getItem('token');
 
-            const res = await axios.post(`${import.meta.env.VITE_BACK_END_SERVER_URL}/boards`, {
+            const res = await axios.post(`${import.meta.env.VITE_BACK_END_SERVER_URL}/boards/new`, {
                 ...form,
                 tags: form.tags.split(',').map(tag => tag.trim())
             }, {
