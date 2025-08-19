@@ -45,7 +45,7 @@ function BoardDetails() {
         <div>
             <h2>{board.name}</h2>
             <p>{board.description}</p>
-            <PodcastList podcasts={podcasts} />
+            <PodcastList boardPodcasts={podcasts} />
         </div>
     )
 }
