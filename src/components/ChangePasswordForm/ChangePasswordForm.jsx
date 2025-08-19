@@ -44,10 +44,10 @@ const ChangePasswordForm = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="currentPassword">Current Password</label>
-        <input type="password" id="currentPassword" name="currentPassword"  onChange={handleChange} required/>
+        <input type="password" id="currentPassword" name="currentPassword" onChange={handleChange} required/>
 
         <label htmlFor="newPassword">New Password</label>
-        <input type="password" id="newPassword" name="newPassword"  onChange={handleChange} required/>
+        <input type="password" id="newPassword" name="newPassword" onChange={handleChange} required/>
         
         <button type="submit" disabled={saving}> {saving ? 'Saving...' : 'Save'}</button>
       </form>
