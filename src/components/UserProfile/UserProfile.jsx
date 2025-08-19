@@ -68,14 +68,6 @@ function UserProfile() {
         <>
             <div className='profile-container'>
                 <div className='profile-form'>
-                    <label className='avatar-wrapper'>
-                        <img 
-                            id='avatarPreview'
-                            src={user.avatar ? `${import.meta.env.VITE_BACK_END_SERVER_URL}${user.avatar}` : undefined}
-                            alt='User Avatar'
-                        />
-                    </label>
-
                     <h2>{user.name}</h2>
                     <p>@{user.username}</p>
                     <p>{user.email}</p>
