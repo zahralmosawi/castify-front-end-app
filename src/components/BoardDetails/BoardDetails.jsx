@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PodcastList from '../PodcastList/PodcastList';
 
 function BoardDetails() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [board, setBoard] = useState(null);
     const [podcasts, setPodcasts] = useState([]);
 
@@ -45,6 +46,7 @@ function BoardDetails() {
         <div>
             <h2>{board.name}</h2>
             <p>{board.description}</p>
+            <button onClick={() => navigate(`/boards/${board._id}/edit`)}>Edit Board</button>
             <PodcastList boardPodcasts={podcasts} />
         </div>
     )
