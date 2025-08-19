@@ -1,0 +1,28 @@
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+function DeleteBoardButton({boardId}) {
+    const navigate = useNavigate();
+
+    async function handleDelete() {
+        const token = localStorage.getItem('token');
+
+        try {
+            await axios.delete(`${import.meta.env.VITE_BACK_END_SERVER_URL}/boards/${boardId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            alert('Board deleted');
+            navigate('/profile');
+        } catch (error) {
+            alert(error.response?.data?.error || "Failed to delete board");
+        }
+    }
+
+    return (
+        <>
+            <button onClick={handleDelete}>Delete Board</button>
+        </>
+    )
+}
+
+export default DeleteBoardButton;

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PodcastList from '../PodcastList/PodcastList';
+import DeleteBoardButton from '../DeleteBoardButton/DeleteBoardButton';
 
 function BoardDetails() {
     const { id } = useParams();
@@ -47,6 +48,7 @@ function BoardDetails() {
             <h2>{board.name}</h2>
             <p>{board.description}</p>
             <button onClick={() => navigate(`/boards/${board._id}/edit`)}>Edit Board</button>
+            <DeleteBoardButton boardId={board._id} />
             <PodcastList boardPodcasts={podcasts} />
         </div>
     )
