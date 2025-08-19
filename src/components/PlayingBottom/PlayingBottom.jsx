@@ -19,7 +19,7 @@ const PlayingBottom = () => {
     return (
         <div>
             <h3>Now Playing</h3>
-            <p><strong>{currentPodcast.title} by {currentPodcast.crator}</strong></p>
+            <p><strong>{currentPodcast.title} by {currentPodcast.creator}</strong></p>
             <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
         </div>
     )
