@@ -13,6 +13,7 @@ import EditProfile from './components/EditProfile/EditProfile';
 import PodcastDetails from './components/PodcastDetails/PodcastDetails';
 import CreateBoard from './components/Boards/CreateBoard';
 import BoardDetails from './components/BoardDetails/BoardDetails.jsx';
+import EditBoard from './components/EditBoard/EditBoard';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -47,6 +48,7 @@ function App() {
           <Route path="/profile/edit" element={<EditProfile />} />
           <Route path="/boards/new" element={<ProtectedRoute><CreateBoard /></ProtectedRoute>} />
           <Route path="/boards/:id" element={<ProtectedRoute><BoardDetails /></ProtectedRoute>} />
+          <Route path="/boards/:id/edit" element={<ProtectedRoute><EditBoard /></ProtectedRoute>} />
         </Routes>
       </div>
     </Router>
