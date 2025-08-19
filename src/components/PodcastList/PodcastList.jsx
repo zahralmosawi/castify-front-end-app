@@ -6,7 +6,7 @@ const PodcastList = ({boardPodcasts}) => {
     const [podcasts, setPodcasts] = useState([])
 
     useEffect(() => {
-        if (boardPodcasts && boardPodcasts.length > 0) {
+        if (boardPodcasts) {
             setPodcasts(boardPodcasts);
         } else {
             const getAllPodcast = async () => {
@@ -22,6 +22,12 @@ const PodcastList = ({boardPodcasts}) => {
             getAllPodcast();
         }
     }, [boardPodcasts])
+
+    if (boardPodcasts && boardPodcasts.length === 0) {
+        return (
+            <p>No Podcasts Added Yet</p>
+        )
+    }
 
   return (
     <>
