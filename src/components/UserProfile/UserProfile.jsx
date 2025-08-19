@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 function UserProfile() {
     const [user, setUser] = useState(null);
     const [boards, setBoards] = useState([]);
+    const [podcasts, setPodcasts] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,6 +32,12 @@ function UserProfile() {
 
                 const userBoards = boardRes.data.filter(board => board.createdBy === res.data._id);
                 setBoards(userBoards);
+
+                const podcastRes = await axios.get(`${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+
+                setPodcasts(podcastRes.data);
             } catch (error) {
                 alert(error.response?.data?.error || "Failed to fetch profile");
             }
@@ -45,6 +52,16 @@ function UserProfile() {
                 <p>Loading Profile...</p>
             </>
         )
+    }
+
+    function getBoardCover(board) {
+        if (board.podcasts && board.podcasts.length > 0) {
+            const firstPodcastId = board.podcasts[0];
+            const podcast = podcasts.find(podcast => podcast._id === firstPodcastId);
+            return podcast?.podcastImage;
+        }
+
+        return "https://res.cloudinary.com/dvhwvkip4/image/upload/v1755620759/4259aa6cd08633d53bb8698ca0c2451f_kdogdp.jpg";
     }
 
     return (
@@ -74,13 +91,18 @@ function UserProfile() {
                     )
                     :
                     (
-                        <ul>
+                        <ul style={{listStyle: "none"}}>
                             {boards.map(board => (
                                 <li key={board._id}>
+                                        {
+                                            getBoardCover(board) && (
+                                                <img src={getBoardCover(board)} alt="Board Cover" width={200} />
+                                            )
+                                        }
+                                    <br />
                                     <Link to={`/boards/${board._id}`}>
                                         <strong>{board.name}</strong>
                                     </Link>
-                                    <p>{board.description}</p>
                                 </li>
                             ))}
                         </ul>
