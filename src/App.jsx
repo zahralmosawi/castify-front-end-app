@@ -15,6 +15,8 @@ import CreateBoard from './components/Boards/CreateBoard';
 import BoardDetails from './components/BoardDetails/BoardDetails.jsx';
 import EditBoard from './components/EditBoard/EditBoard';
 import ChangePasswordForm from './components/ChangePasswordForm/ChangePasswordForm.jsx'
+import { PodcastPlayingProvider } from './Contexts/PodcastPlayingContext'
+import PlayingBottom from './components/PlayingBottom/PlayingBottom.jsx'
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -34,6 +36,7 @@ function App() {
   }
 
   return (
+    <PodcastPlayingProvider>
     <Router>
       <div>
         {token && <LogoutButton onLogout={handleLogout}/>}
@@ -52,8 +55,10 @@ function App() {
           <Route path="/boards/:id/edit" element={<ProtectedRoute><EditBoard /></ProtectedRoute>} />
           <Route path="/changePassword" element={<ProtectedRoute><ChangePasswordForm /></ProtectedRoute>} />
         </Routes>
+        <PlayingBottom />
       </div>
     </Router>
+    </PodcastPlayingProvider>
   )
 }
 
