@@ -21,7 +21,7 @@ const PodcastList = ({boardPodcasts}) => {
             }
             getAllPodcast();
         }
-    }, [podcasts])
+    }, [boardPodcasts])
 
   return (
     <>
