@@ -7,7 +7,7 @@ const PodcastList = ({boardPodcasts}) => {
 
     useEffect(() => {
         if (boardPodcasts && boardPodcasts.length > 0) {
-            setAllPodcasts(boardPodcasts);
+            setPodcasts(boardPodcasts);
         } else {
             const getAllPodcast = async () => {
                 const url = `${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`
@@ -21,7 +21,7 @@ const PodcastList = ({boardPodcasts}) => {
             }
             getAllPodcast();
         }
-    }, [podcasts])
+    }, [boardPodcasts])
 
   return (
     <>
