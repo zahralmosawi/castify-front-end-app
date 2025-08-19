@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useParams } from "react-router-dom"
 import { getPodcast } from "../../../lib/podcast_api"
+import PodcastPlayingContext from '../../Contexts/PodcastPlayingContext'
 
 const PodcastDetails = () => {
     const [podcast, setPodcast] = useState({})
     const { id } = useParams()
+    const { playPodcast, isPlaying, currentPodcast } = useContext(PodcastPlayingContext)
 
     useEffect(() => {
         const fetchPodcast = async () => {
@@ -19,6 +21,10 @@ const PodcastDetails = () => {
         fetchPodcast()
     }, [])
 
+    const handlePlay = () => {
+        playPodcast(podcast)
+    }
+
     return (
         <div>
             <h1>{podcast.title}</h1>
@@ -30,6 +36,9 @@ const PodcastDetails = () => {
                     <audio controls src={podcast.audio_url.url}></audio>
                 )
             }
+            <button onClick={handlePlay}>
+                {isPlaying && currentPodcast?.id === podcast.id ? 'Pause' : 'Play'}
+            </button>
         </div>
     )
 }
