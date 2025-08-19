@@ -11,6 +11,7 @@ import SideBar from './components/SideBar/SideBar';
 import UserProfile from './components/UserProfile/UserProfile';
 import EditProfile from './components/EditProfile/EditProfile';
 import PodcastDetails from './components/PodcastDetails/PodcastDetails';
+import CreateBoard from './components/Boards/CreateBoard';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -43,6 +44,7 @@ function App() {
           <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/profile/edit" element={<EditProfile />} />
+          <Route path="/boards/new" element={<ProtectedRoute><CreateBoard /></ProtectedRoute>} />
         </Routes>
       </div>
     </Router>
