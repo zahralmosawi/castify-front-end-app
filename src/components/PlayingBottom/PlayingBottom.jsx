@@ -1,4 +1,4 @@
-import PodcastPlayingContext, { useAudio } from '../../Contexts/PodcastPlayingContext'
+import PodcastPlayingContext from '../../Contexts/PodcastPlayingContext'
 import { useContext } from 'react'
 
 const PlayingBottom = () => {
