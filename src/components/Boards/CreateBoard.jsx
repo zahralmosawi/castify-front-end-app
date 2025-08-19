@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, use} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -7,10 +7,37 @@ function CreateBoard() {
         name: '',
         description: '',
         isPublic: false,
-        tags: ''
-    });
+        tags: '',
+        podcasts: []
+    })
+
+    const [podcasts, setPodcasts] = useState([])
+    const [selectedPodcast, setSelectedPodcast] = useState([])
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchPodcasts = async () => {
+            try {
+                const token = localStorage.getItem('token')
+                const res = await axios.get(`${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                })
+                setPodcasts(res.data);
+            }catch (error) {
+                console.error("Failed", error)
+            }
+        }
+            fetchPodcasts()
+        }, [])
+        
+        function handlePodcastSelect(id){
+        setSelectedPodcast(prev =>
+            prev.includes(id)
+                ? prev.filter(podcastId => podcastId !== id)
+                : [...prev, id]
+            )
+        }
 
     function handleChange(event) {
         const {name, value, type, checked} = event.target;
@@ -26,7 +53,8 @@ function CreateBoard() {
 
             const res = await axios.post(`${import.meta.env.VITE_BACK_END_SERVER_URL}/boards/new`, {
                 ...form,
-                tags: form.tags.split(',').map(tag => tag.trim())
+                tags: form.tags.split(',').map(tag => tag.trim()),
+                podcasts: selectedPodcast
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             })
@@ -47,6 +75,18 @@ function CreateBoard() {
                 <label>Public</label>
                 <input type="checkbox" name="isPublic" onChange={handleChange} checked={form.isPublic} />
                 <input name="tags" placeholder="Tags" onChange={handleChange} value={form.tags} />
+
+                <label>Select Podcast</label>
+                <ul>
+                    {podcasts.map(podcast => (
+                        <li key={podcast.id}>
+                            <label>
+                                <input type="checkbox" checked={selectedPodcast.includes(podcast.id)} onChange={()=>handlePodcastSelect(podcast.id)}/>
+                                <img src={podcast.podcastImage} alt={podcast.title} width="50"/> {podcast.title}
+                            </label>
+                        </li>
+                    ))}
+                </ul>
 
                 <button type="submit">Create Board</button>
             </form>
