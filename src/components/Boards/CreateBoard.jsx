@@ -23,7 +23,7 @@ function CreateBoard() {
                 const res = await axios.get(`${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`, {
                     headers: { Authorization: `Bearer ${token}` }
                 })
-                setPodcasts(res.data);
+                setPodcasts(res.data)
             }catch (error) {
                 console.error("Failed", error)
             }
@@ -32,7 +32,8 @@ function CreateBoard() {
         }, [])
         
         function handlePodcastSelect(id){
-        setSelectedPodcast(prev =>
+            console.log("Clicked podcast id:", id)
+            setSelectedPodcast(prev =>
             prev.includes(id)
                 ? prev.filter(podcastId => podcastId !== id)
                 : [...prev, id]
@@ -79,9 +80,9 @@ function CreateBoard() {
                 <label>Select Podcast</label>
                 <ul>
                     {podcasts.map(podcast => (
-                        <li key={podcast.id}>
+                        <li key={podcast._id}>
                             <label>
-                                <input type="checkbox" checked={selectedPodcast.includes(podcast.id)} onChange={()=>handlePodcastSelect(podcast.id)}/>
+                                <input type="checkbox" checked={selectedPodcast.includes(podcast._id)} onChange={()=>handlePodcastSelect(podcast._id)}/>
                                 <img src={podcast.podcastImage} alt={podcast.title} width="50"/> {podcast.title}
                             </label>
                         </li>
