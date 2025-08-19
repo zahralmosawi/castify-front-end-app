@@ -11,8 +11,6 @@ function EditProfile() {
     });
 
     const [userId, setUserId] = useState(null);
-    const [avatarFile, setAvatarFile] = useState(null);
-    const [avatarPreview, setAvatarPreview] = useState(null);
     const [saving, setSaving] = useState(false);
 
     const navigate = useNavigate();
@@ -37,8 +35,6 @@ function EditProfile() {
                     bio: res.data.bio,
                     email: res.data.email
                 });
-
-                setAvatarPreview(res.data.avatar);
                 setUserId(res.data._id);
             } catch (error) {
                 alert(error.response?.data?.error || "Failed to load profile.");
@@ -51,17 +47,6 @@ function EditProfile() {
     function handleChange(event) {
         const { name, value } = event.target;
         setForm(previous => ({...previous, [name]: value}));
-    }
-
-    function handleFile(event) {
-        const file = event.target.files?.[0];
-
-        if (!file) {
-            return;
-        }
-
-        setAvatarFile(file);
-        setAvatarPreview(URL.createObjectURL(file));
     }
 
     async function handleSubmit(event) {
@@ -78,19 +63,15 @@ function EditProfile() {
 
             const url = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users/profile`;
 
-            const data = new FormData();
-            data.append('name', form.name);
-            data.append('email', form.email);
-            data.append('bio', form.bio);
-
-            if (avatarFile) {
-                data.append('avatar', avatarFile);
-            }
+            const data = {
+                name: form.name,
+                email: form.email,
+                bio: form.bio
+            };
 
             const res = await axios.put(url, data, {
                 headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data'
+                    Authorization: `Bearer ${token}`
                 }
             });
 
@@ -110,20 +91,6 @@ function EditProfile() {
             <h2>Edit Profile</h2>
 
             <form onSubmit={handleSubmit}>
-                <div>
-                    <img 
-                        src={avatarPreview ? `${import.meta.env.VITE_BACK_END_SERVER_URL}${avatarPreview}` : undefined}
-                        alt="Avatar Preview" 
-                    />
-
-                    <input 
-                        id='avatar'
-                        type='file'
-                        accept='image/*'
-                        onChange={handleFile}
-                    />
-                </div>
-
                 <input
                     name="username"
                     value={form.username}
