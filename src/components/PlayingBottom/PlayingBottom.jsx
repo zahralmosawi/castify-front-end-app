@@ -1,6 +1,7 @@
 import PodcastPlayingContext from '../../Contexts/PodcastPlayingContext'
 import { useContext } from 'react'
 import { useLocation } from 'react-router-dom';
+import './PlayingBottom.css';
 
 const PlayingBottom = () => {
     const { currentPodcast, isPlaying, playPodcast, pausePodcast } = useContext(PodcastPlayingContext)
@@ -24,8 +25,7 @@ const PlayingBottom = () => {
     }
 
     return (
-        <div>
-            <h3>Now Playing</h3>
+        <div className='playing-bottom-container '>
             <img src={currentPodcast.podcastImage} alt={currentPodcast.title} width="70" />
             <p><strong>{currentPodcast.title} by {currentPodcast.creator}</strong></p>
             <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
