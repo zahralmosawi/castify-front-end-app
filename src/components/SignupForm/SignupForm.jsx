@@ -30,10 +30,11 @@ function SignupForm() {
                 bio: formData.bio
             });
 
-            alert('User registered, please login');
+            alert('User registered, please login'); //
             navigate('/login');
         } catch (error) {
-            alert(error.response?.data?.message || 'Registration failed');
+            console.log(error)
+            res.status(500).json({error: "Registration failed"})
         }
     }
 

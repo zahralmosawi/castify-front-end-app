@@ -121,6 +121,7 @@ function EditProfile() {
 
                 <button type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save Changes'}</button>
             </form>
+            <Link to='/changePassword'> Change Your Password? </Link>
         </>
     )
 }
