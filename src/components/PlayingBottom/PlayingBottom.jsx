@@ -26,9 +26,9 @@ const PlayingBottom = () => {
 
     return (
         <div className='playing-bottom-container '>
-            <img src={currentPodcast.podcastImage} alt={currentPodcast.title} width="70" />
+            <img  className='podcast-img' src={currentPodcast.podcastImage} alt={currentPodcast.title} width="70" />
             <p><strong>{currentPodcast.title} by {currentPodcast.creator}</strong></p>
-            <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+            <button onClick={handlePlayPause}>{isPlaying ? '❚❚' : '▶'}</button>
         </div>
     )
 }

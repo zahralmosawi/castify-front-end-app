@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import './SignupForm.css';
 
@@ -40,8 +40,6 @@ function SignupForm() {
                 bio: formData.bio,
                 avatar: avatarUrl
             });
-
-            alert('User registered, please login'); //
             navigate('/login');
         } catch (error) {
             console.log(error)
@@ -50,34 +48,17 @@ function SignupForm() {
     }
 
     return (
-        <div className="signup-container">
-        <form onSubmit={handleSubmit} className="signup-form">
-            <h2>Sign Up</h2>
-
-            <div className='form-group'>
-            <input name="username" placeholder="Username" onChange={handleChange} required />
-            </div>
-
-            <div className='form-group'>
-            <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
-            </div>
-            
-            <div className='form-group'>
-            <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
-            </div>
-
-            <div className='form-group'>
-            <input name="name" placeholder="Name" onChange={handleChange} />
-            </div>
-
-            <div className='form-group'>
-            <textarea name="bio" placeholder="Bio" onChange={handleChange} />
-            </div>
-
-            <div className='singup-button'>
-            <button type="submit">Sign Up</button>
-            </div>
-        </form>
+        <div className="main-content">
+            <form onSubmit={handleSubmit}>
+                <h2>Sign Up</h2>
+                <input name="username" placeholder="Username" onChange={handleChange} required />
+                <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
+                <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
+                <input name="name" placeholder="Name" onChange={handleChange} />
+                <textarea name="bio" placeholder="Bio" onChange={handleChange} />
+                <button type="submit">Sign Up</button>
+                <Link to="/login" style={{textAlign: 'center', display: 'block', marginTop: '1.5rem'}}>Already have an account? Log in</Link>
+            </form>
         </div>
     )
 }
