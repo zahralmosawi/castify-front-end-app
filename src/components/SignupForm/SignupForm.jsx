@@ -13,6 +13,13 @@ function SignupForm() {
 
     const navigate = useNavigate();
 
+    const avatarImages = [
+        "https://res.cloudinary.com/dvhwvkip4/image/upload/v1755698117/3da40ec9631f142c2719639892fff081_vdl1c7.jpg",
+        "https://res.cloudinary.com/dvhwvkip4/image/upload/v1755698117/f63fb740d8122a7233a2e92fff672077_joehiq.jpg",
+        "https://res.cloudinary.com/dvhwvkip4/image/upload/v1755698117/15e5da640fe35d6122350347f146d588_esc23l.jpg",
+        "https://res.cloudinary.com/dvhwvkip4/image/upload/v1755698118/cd2badcbc611e6eaf574f2634ff74355_kjstka.jpg"
+    ];
+
     const handleChange = async event => {
         const {name, value} = event.target
         setFormData(prev => ({...prev, [name]: value}));
@@ -21,13 +28,16 @@ function SignupForm() {
     const handleSubmit = async event => {
         event.preventDefault();
 
+        const avatarUrl = avatarImages[Math.floor(Math.random() * avatarImages.length)];
+
         try {
             await axios.post('http://localhost:3000/auth/signup', {
                 username: formData.username,
                 email: formData.email,
                 password: formData.password,
                 name: formData.name,
-                bio: formData.bio
+                bio: formData.bio,
+                avatar: avatarUrl
             });
 
             alert('User registered, please login'); //

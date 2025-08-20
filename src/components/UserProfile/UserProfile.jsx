@@ -71,6 +71,12 @@ function UserProfile() {
             <div className='container'>
                 <div className="profile-container">
                     <div className="profile-card">
+                        {user.avatar && (
+                            <img className="profile-avatar"
+                                src={user.avatar}
+                                alt="User Avatar"
+                            />
+                        )}
                         <h2 className="profile-name">{user.name}</h2>
                         <p className="profile-username">@{user.username}</p>
                         <p className="profile-email">{user.email}</p>
