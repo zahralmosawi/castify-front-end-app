@@ -11,10 +11,11 @@ function DeleteBoardButton({boardId}) {
             await axios.delete(`${import.meta.env.VITE_BACK_END_SERVER_URL}/boards/${boardId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            alert('Board deleted');
+            alert('Board deleted'); //
             navigate('/profile');
         } catch (error) {
-            alert(error.response?.data?.error || "Failed to delete board");
+            console.log(error)
+            res.status(500).json({error: "Failed to delete board"})
         }
     }
 

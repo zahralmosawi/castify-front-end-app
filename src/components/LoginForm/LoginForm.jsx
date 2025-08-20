@@ -20,7 +20,8 @@ function LoginForm({ onLogin }) {
             onLogin(res.data.token);
             navigate('/podcasts');
         } catch (error) {
-            alert(error.response?.data?.message || 'Login failed');
+            console.log(error)
+            res.status(500).json({error: "Login failed"})
         }
     }
 

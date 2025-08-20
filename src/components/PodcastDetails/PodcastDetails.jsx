@@ -14,7 +14,8 @@ const PodcastDetails = () => {
                 const response = await getPodcast(id)
                 setPodcast(response)
             } catch (error) {
-                console.error(error)
+                console.log(error)
+                res.status(500).json({error: error.message})
                 setPodcast(null)
             } 
         }

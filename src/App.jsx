@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 
 import PodcastList from "./components/PodcastList/PodcastList";
 import LoginForm from './components/LoginForm/LoginForm';
-import SignupForm from './components/SignupForm.jsx/SignupForm';
+import SignupForm from './components/SignupForm/SignupForm';
 import LogoutButton from './components/LogoutButton/LogoutButton';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import SideBar from './components/SideBar/SideBar';

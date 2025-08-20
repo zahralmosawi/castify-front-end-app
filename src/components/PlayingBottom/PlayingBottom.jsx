@@ -1,8 +1,25 @@
 import PodcastPlayingContext from '../../Contexts/PodcastPlayingContext'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const PlayingBottom = () => {
     const { currentPodcast, isPlaying, playPodcast, pausePodcast } = useContext(PodcastPlayingContext)
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        try{
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+                navigate('/login');
+                return;
+            }
+
+        }catch(error){
+            console.log(error)
+            res.status(500).json({error: error.message})
+        }
+    }, [])
 
     if (!currentPodcast) {
         return null 
