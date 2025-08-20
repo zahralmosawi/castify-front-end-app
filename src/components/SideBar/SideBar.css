@@ -10,7 +10,7 @@ position: fixed;
     flex-direction: column;
     align-items: flex-start;
     padding: 2rem 1rem;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+    box-shadow: 2px 0 7px rgba(0,0,0,0.05);
 }
 
 .navbar a {

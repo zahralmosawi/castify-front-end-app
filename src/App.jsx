@@ -55,7 +55,7 @@ function App() {
           <Route path="/boards/:id/edit" element={<ProtectedRoute><EditBoard /></ProtectedRoute>} />
           <Route path="/changePassword" element={<ProtectedRoute><ChangePasswordForm /></ProtectedRoute>} />
           <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        </Routes>
+        </Routes> 
         <PlayingBottom />
       </div>
       </div>
