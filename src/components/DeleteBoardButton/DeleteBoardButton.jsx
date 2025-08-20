@@ -21,7 +21,7 @@ function DeleteBoardButton({boardId}) {
 
     return (
         <>
-            <button onClick={handleDelete}>Delete Board</button>
+            <button onClick={handleDelete} className='btn-delete'>Delete Board</button>
         </>
     )
 }
