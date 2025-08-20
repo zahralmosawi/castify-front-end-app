@@ -9,8 +9,6 @@ const SideBar = ({showAuthLinks, onLogout}) => {
             {showAuthLinks ? (
                 <>
                     <div className='authLinks'>
-                        <Link to='/signup'>Sign Up </Link>
-                        <Link to='/login'> Login </Link>
                     </div>
                 </>
             )
