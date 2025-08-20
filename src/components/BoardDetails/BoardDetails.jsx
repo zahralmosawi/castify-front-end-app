@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './BoardDetails.css';
 import PodcastList from '../PodcastList/PodcastList';
 import DeleteBoardButton from '../DeleteBoardButton/DeleteBoardButton';
 
@@ -44,12 +45,34 @@ function BoardDetails() {
     }
 
     return (
-        <div>
-            <h2>{board.name}</h2>
-            <p>{board.description}</p>
-            <button onClick={() => navigate(`/boards/${board._id}/edit`)}>Edit Board</button>
-            <DeleteBoardButton boardId={board._id} />
-            <PodcastList boardPodcasts={podcasts} />
+        <div className="board-page">
+            <div className="board-header">
+                <h1 className="board-title">{board.name}</h1>
+                {board.description && (
+                    <p className="board-description">{board.description}</p>
+                )}
+
+                <div className="board-info">
+                    {Array.isArray(board.tags) && board.tags.map(tag => (
+                        <span className="tag" key={tag}>{tag}</span>
+                    ))}
+
+                    {typeof board.isPublic === 'boolean' && (
+                        <span className={`status ${board.isPublic ? 'status-public' : 'status-private'}`}>
+                            {board.isPublic ? 'Public' : 'Private'}
+                        </span>
+                    )}
+                </div>
+
+                <div className="board-buttons">
+                    <button className="btn-edit" onClick={() => navigate(`/boards/${board._id}/edit`)}>Edit Board</button>
+                    <DeleteBoardButton boardId={board._id}/>
+                </div>
+            </div>
+
+            <div className="board-content">
+                <PodcastList boardPodcasts={podcasts} />
+            </div>
         </div>
     )
 }
