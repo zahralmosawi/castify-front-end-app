@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './UserProfile.css';
 
 function UserProfile() {
     const [user, setUser] = useState(null);
@@ -67,43 +68,43 @@ function UserProfile() {
 
     return (
         <>
-            <div className='profile-container'>
-                <div className='profile-form'>
-                    <h2>{user.name}</h2>
-                    <p>@{user.username}</p>
-                    <p>{user.email}</p>
-                    <p>{user.bio}</p>
+            <div className='container'>
+                <div className="profile-container">
+                    <div className="profile-card">
+                        <h2 className="profile-name">{user.name}</h2>
+                        <p className="profile-username">@{user.username}</p>
+                        <p className="profile-email">{user.email}</p>
+                        <p className="profile-bio">{user.bio}</p>
 
-                    <button onClick={() => navigate('/profile/edit')}>Edit Profile</button>
-                    <button onClick={() => navigate('/boards/new')}>+ Create New Board</button>
-                </div>
+                        <div className="profile-buttons">
+                        <button onClick={() => navigate('/profile/edit')} className="edit-btn">Edit Profile</button>
+                        <button onClick={() => navigate('/boards/new')} className="create-btn">+ Create New Board</button>
+                        </div>
+                    </div>
 
-                <div className='boards-list'>
-                    {boards.length === 0 ? (
-                        <p>Start by creating a board</p>
-                    )
-                    :
-                    (
-                        <ul style={{listStyle: "none"}}>
-                            {boards.map(board => (
-                                <li key={board._id}>
-                                        {
-                                            getBoardCover(board) && (
-                                                <img src={getBoardCover(board)} alt="Board Cover" width={200} />
-                                            )
-                                        }
-                                    <br />
-                                    <Link to={`/boards/${board._id}`}>
-                                        <strong>{board.name}</strong>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    )
-                
-                }
+                    <div className="boards-section">
+                        {boards.length === 0 ? (
+                            <p className="no-boards">Start by creating a board</p>
+                        ) : (
+                            <ul className="boards-grid">
+                                {boards.map(board => (
+                                    <li key={board._id} className="board-card">
+                                        <img
+                                            src={getBoardCover(board)}
+                                            alt="Board Cover"
+                                            className="board-cover"
+                                        />
+                                        <Link to={`/boards/${board._id}`} className="board-name">
+                                            {board.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
                 </div>
             </div>
+            
         </>
     )
 }
