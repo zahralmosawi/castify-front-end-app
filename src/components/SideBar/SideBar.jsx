@@ -20,10 +20,7 @@ const SideBar = ({showAuthLinks, onLogout}) => {
                 <div className='navbar'>
                     <Link to='/'><FaSearch style={{ marginRight: '8px' }} /> Explore </Link>
                     <Link to='/profile'><FaUser style={{ marginRight: '8px' }} /> Profile </Link>
-
-                    {/* <div className='logoutLink'> */}
-                        <a href='#' onClick={event => {event.preventDefault(); onLogout();}}><FaSignOutAlt style={{ marginRight: '8px' }} /> Logout </a>
-                    {/* </div> */}
+                    <a href='#' onClick={event => {event.preventDefault(); onLogout();}}><FaSignOutAlt style={{ marginRight: '8px' }} /> Logout </a>
                 </div>
                 </>
             )
