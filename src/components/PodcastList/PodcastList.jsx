@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
+import './PodcastList.css'
 
 const PodcastList = ({boardPodcasts}) => {
     const [podcasts, setPodcasts] = useState([])
@@ -31,12 +32,12 @@ const PodcastList = ({boardPodcasts}) => {
 
   return (
     <>
-        <ul style={{listStyle: "none"}}>
+        <ul className='horizontal-list' style={{listStyle: "none"}}>
             {
                 podcasts.map(podcast => {
                     return(
                         <>
-                        <li>
+                        <li key={podcast._id} className='podcast-card'>
                             <Link to={`/podcasts/${podcast._id}`}><img src={podcast.podcastImage} alt={podcast.title} width="200"/></Link>
                             <p><strong>{podcast.title}</strong></p>
                             <p>Creator: {podcast.creator}</p>
