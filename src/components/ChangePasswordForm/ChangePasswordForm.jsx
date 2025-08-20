@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import './ChangePasswordForm.css'
 
 const ChangePasswordForm = () => {
     const [form, setForm] = useState({
@@ -41,15 +42,19 @@ const ChangePasswordForm = () => {
         } 
     }
     return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="currentPassword">Current Password</label>
-        <input type="password" id="currentPassword" name="currentPassword" onChange={handleChange} required/>
+    <div className="pass-constainer">
+      <form onSubmit={handleSubmit} className="pass-form" >
+        <h2>Change Password</h2>
 
-        <label htmlFor="newPassword">New Password</label>
-        <input type="password" id="newPassword" name="newPassword" onChange={handleChange} required/>
-        
-        <button type="submit" disabled={saving}> {saving ? 'Saving...' : 'Save'}</button>
+        <div className="form-group">
+        <input className="pass-input" type="password" placeholder="Current Password" id="currentPassword" name="currentPassword" onChange={handleChange} required/>
+        </div>
+
+        <div className="form-group">
+        <input className="pass-input" type="password" placeholder="New Password"  id="newPassword" name="newPassword" onChange={handleChange} required/>
+        </div>
+
+        <button className="pass-button" type="submit" disabled={saving}> {saving ? 'Saving...' : 'Save'}</button>
       </form>
     </div>
   )
