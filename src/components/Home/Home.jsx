@@ -33,36 +33,37 @@ function Home() {
 
     return (
         <div className="container">
-            <br/><br/>
-            <input
-                type='text'
-                className="searchInput"
-                placeholder='Search Podcasts'
-                value={search}
-                onChange={event => setSearch(event.target.value)}
-            />
+            <div className='content'>
+                <input
+                    type='text'
+                    className="searchInput"
+                    placeholder='Search Podcasts'
+                    value={search}
+                    onChange={event => setSearch(event.target.value)}
+                />
 
-            {search.trim() ? (
-                <PodcastList boardPodcasts={filteredPodcasts} />
-            ) : (
-                <>
-                    <div className="section">
-                        <div className="sectionTitle">Featured</div>
-                        <PodcastList boardPodcasts={featured} />
-                    </div>
+                {search.trim() ? (
+                    <PodcastList boardPodcasts={filteredPodcasts} />
+                ) : (
+                    <>
+                        <div className="section">
+                            <div className="sectionTitle">Featured</div>
+                            <PodcastList boardPodcasts={featured} />
+                        </div>
 
-                    <div className="section">
-                        <div className="sectionTitle">Continue Listening</div>
-                        <PodcastList boardPodcasts={continueListening} />
-                    </div>
+                        <div className="section">
+                            <div className="sectionTitle">Continue Listening</div>
+                            <PodcastList boardPodcasts={continueListening} />
+                        </div>
 
-                    <div className="section">
-                        <div className="sectionTitle">All Podcasts</div>
-                        <PodcastList boardPodcasts={filteredPodcasts} />
-                    </div>
-                </>
-            )}
-        </div>
+                        <div className="section">
+                            <div className="sectionTitle">All Podcasts</div>
+                            <PodcastList boardPodcasts={filteredPodcasts} />
+                        </div>
+                    </>
+                )}
+            </div>
+        </div>    
     )
 }
 
