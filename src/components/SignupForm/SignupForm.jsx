@@ -40,8 +40,6 @@ function SignupForm() {
                 bio: formData.bio,
                 avatar: avatarUrl
             });
-
-            alert('User registered, please login'); //
             navigate('/login');
         } catch (error) {
             console.log(error)

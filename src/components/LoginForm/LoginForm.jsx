@@ -19,7 +19,7 @@ function LoginForm({ onLogin }) {
 
             localStorage.setItem('token', res.data.token);
             onLogin(res.data.token);
-            navigate('/podcasts');
+            navigate('/');
         } catch (error) {
             console.log(error)
             res.status(500).json({error: "Login failed"})
