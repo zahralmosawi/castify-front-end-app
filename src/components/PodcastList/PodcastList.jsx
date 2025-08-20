@@ -36,7 +36,7 @@ const PodcastList = ({boardPodcasts}) => {
                 podcasts.map(podcast => {
                     return(
                         <>
-                        <li>
+                        <li key={podcast._id}>
                             <Link to={`/podcasts/${podcast._id}`}><img src={podcast.podcastImage} alt={podcast.title} width="200"/></Link>
                             <p><strong>{podcast.title}</strong></p>
                             <p>Creator: {podcast.creator}</p>
