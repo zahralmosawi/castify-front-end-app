@@ -18,7 +18,7 @@ function Home() {
 
             const data = await res.json();
             setPodcasts(data);
-            setFeatured(data.slice(0, 5));
+            setFeatured(data.slice(0, 4));
 
             const progress = JSON.parse(localStorage.getItem('podcastProgress') || '{}');
             const continueList = data.filter(podcast => progress[podcast._id]);
