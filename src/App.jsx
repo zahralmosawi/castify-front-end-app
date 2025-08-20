@@ -39,10 +39,10 @@ function App() {
   return (
     <PodcastPlayingProvider>
     <Router>
-      <div>
-        {token && <LogoutButton onLogout={handleLogout}/>}
-        {<SideBar/>}
+      <div style={{display: 'flex'}}>
+        {<SideBar showAuthLinks={!token} onLogout={handleLogout}/>}
 
+        <div style={{marginLeft: token ? '180px' : '0', flex: 1}}>
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/signup" element={<SignupForm />} />
@@ -58,6 +58,7 @@ function App() {
           <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         </Routes>
         <PlayingBottom />
+      </div>
       </div>
     </Router>
     </PodcastPlayingProvider>
