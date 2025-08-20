@@ -1,3 +1,4 @@
+import './EditProfile.css';
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -88,40 +89,44 @@ function EditProfile() {
     
     return (
         <>
-            <h2>Edit Profile</h2>
+            <div className='main-content'>
+                <div className='container'>
+                    <h2>Edit Profile</h2>
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    name="username"
-                    value={form.username}
-                    readOnly
-                    disabled
-                />
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            name="username"
+                            value={form.username}
+                            readOnly
+                            disabled
+                        />
 
-                <input
-                    name="email"
-                    placeholder="Email"
-                    value={form.email}
-                    onChange={handleChange}
-                />
+                        <input
+                            name="email"
+                            placeholder="Email"
+                            value={form.email}
+                            onChange={handleChange}
+                        />
 
-                <input
-                    name="name"
-                    placeholder="Name"
-                    value={form.name}
-                    onChange={handleChange}
-                />
+                        <input
+                            name="name"
+                            placeholder="Name"
+                            value={form.name}
+                            onChange={handleChange}
+                        />
 
-                <textarea
-                    name="bio"
-                    placeholder="Bio"
-                    value={form.bio}
-                    onChange={handleChange}
-                />
+                        <textarea
+                            name="bio"
+                            placeholder="Bio"
+                            value={form.bio}
+                            onChange={handleChange}
+                        />
 
-                <button type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save Changes'}</button>
-            </form>
-            <Link to='/changePassword'> Change Your Password? </Link>
+                        <button type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save Changes'}</button>
+                    </form>
+                    <Link to='/changePassword'> Change Password </Link>
+                </div>
+            </div>
         </>
     )
 }
