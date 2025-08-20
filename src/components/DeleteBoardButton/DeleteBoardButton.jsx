@@ -15,8 +15,7 @@ function DeleteBoardButton({boardId}) {
             navigate('/profile');
         } catch (error) {
             console.log(error)
-            res.status(500).json({error: error.message})
-            res.status(404).json({error: "Failed to delete board"})
+            res.status(500).json({error: "Failed to delete board"})
         }
     }
 
