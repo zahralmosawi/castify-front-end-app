@@ -1,25 +1,15 @@
 import PodcastPlayingContext from '../../Contexts/PodcastPlayingContext'
-import { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react'
+import { useLocation } from 'react-router-dom';
 
 const PlayingBottom = () => {
     const { currentPodcast, isPlaying, playPodcast, pausePodcast } = useContext(PodcastPlayingContext)
-    const navigate = useNavigate();
+    const location = useLocation()
+    const token = localStorage.getItem('token');
 
-    useEffect(() => {
-        try{
-            const token = localStorage.getItem('token');
-
-            if (!token) {
-                navigate('/login');
-                return;
-            }
-
-        }catch(error){
-            console.log(error)
-            res.status(500).json({error: error.message})
-        }
-    }, [])
+    if (!token || location.pathname === '/login' || location.pathname === '/signup') {
+        return null;
+    }
 
     if (!currentPodcast) {
         return null 

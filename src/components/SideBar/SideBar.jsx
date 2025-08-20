@@ -1,6 +1,7 @@
 import './SideBar.css';
 import { Link } from 'react-router'
 import { useLocation } from 'react-router-dom';
+import { FaSearch, FaUser, FaSignOutAlt, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 
 const SideBar = ({showAuthLinks, onLogout}) => {
     return(
@@ -8,7 +9,7 @@ const SideBar = ({showAuthLinks, onLogout}) => {
             {showAuthLinks ? (
                 <>
                     <div className='authLinks'>
-                        <Link to='/signup'> Sign Up </Link>
+                        <Link to='/signup'>Sign Up </Link>
                         <Link to='/login'> Login </Link>
                     </div>
                 </>
@@ -17,12 +18,9 @@ const SideBar = ({showAuthLinks, onLogout}) => {
             (
                 <>
                 <div className='navbar'>
-                    <Link to='/'> Explore </Link>
-                    <Link to='/profile'> Profile </Link>
-
-                    <div className='logoutLink'>
-                        <a href='#' onClick={event => {event.preventDefault(); onLogout();}}> Logout </a>
-                    </div>
+                    <Link to='/'><FaSearch style={{ marginRight: '8px' }} /> Explore </Link>
+                    <Link to='/profile'><FaUser style={{ marginRight: '8px' }} /> Profile </Link>
+                    <a href='#' onClick={event => {event.preventDefault(); onLogout();}}><FaSignOutAlt style={{ marginRight: '8px' }} /> Logout </a>
                 </div>
                 </>
             )

@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import { useParams } from "react-router-dom"
 import { getPodcast } from "../../../lib/podcast_api"
 import PodcastPlayingContext from '../../Contexts/PodcastPlayingContext'
+import './PodcastDetails.css'
 
 const PodcastDetails = () => {
     const [podcast, setPodcast] = useState({})
@@ -27,14 +28,15 @@ const PodcastDetails = () => {
     }
 
     return (
-        <div>
+        <div className="podcast-details-container">
             <h1>{podcast.title}</h1>
-            <img src={podcast.podcastImage} alt={podcast.title} width="400" />
+            <img src={podcast.podcastImage} alt={podcast.title} />
             <p>{podcast.creator}</p>
             <p>{podcast.description}</p>
             {
                 podcast.audio_url?.url && (
                     <audio controls src={podcast.audio_url.url} 
+                        onPlay={() => playPodcast(podcast)}
                         onTimeUpdate={event => {
                             const currentTime = event.target.currentTime;
                             const duration = event.target.duration;
@@ -52,9 +54,6 @@ const PodcastDetails = () => {
                     ></audio>
                 )
             }
-            <button onClick={handlePlay}>
-                {isPlaying && currentPodcast?.id === podcast.id ? 'Pause' : 'Play'}
-            </button>
         </div>
     )
 }
