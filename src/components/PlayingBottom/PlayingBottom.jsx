@@ -1,8 +1,17 @@
 import PodcastPlayingContext from '../../Contexts/PodcastPlayingContext'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const PlayingBottom = () => {
     const { currentPodcast, isPlaying, playPodcast, pausePodcast } = useContext(PodcastPlayingContext)
+    const navigate = useNavigate();
+
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        navigate('/login');
+        return;
+    }
 
     if (!currentPodcast) {
         return null 
