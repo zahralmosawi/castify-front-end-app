@@ -39,7 +39,8 @@ function UserProfile() {
 
                 setPodcasts(podcastRes.data);
             } catch (error) {
-                alert(error.response?.data?.error || "Failed to fetch profile");
+                console.log(error)
+                res.status(500).json({error: "Failed to fetch profile"})
             }
         }
 
