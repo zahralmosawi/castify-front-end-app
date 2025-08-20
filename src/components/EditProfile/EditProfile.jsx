@@ -38,7 +38,7 @@ function EditProfile() {
                 });
                 setUserId(res.data._id);
             } catch (error) {
-                alert(error.response?.data?.error || "Failed to load profile.");
+                console.log(error.response?.data?.error || "Failed to load profile.");
             }
         }
 
@@ -80,10 +80,10 @@ function EditProfile() {
                 localStorage.setItem('token', res.data.token);
             }
 
-            alert('Profile Updated');
+            console.log('Profile Updated');
             navigate('/profile');
         } catch (error) {
-            alert(error.response?.data?.error || 'Failed to update profile.');
+            console.log(error.response?.data?.error || 'Failed to update profile.');
         }
     }
     

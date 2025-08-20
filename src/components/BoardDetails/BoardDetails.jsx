@@ -34,7 +34,7 @@ function BoardDetails() {
                 setPodcasts(filteredPodcasts);
                 }
             } catch (error) {
-                alert(error.response?.data?.error || "Failed to fetch board");
+                console.log(error.response?.data?.error || "Failed to fetch board");
             }
         }
         getBoard();

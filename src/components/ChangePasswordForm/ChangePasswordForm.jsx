@@ -23,7 +23,7 @@ const ChangePasswordForm = () => {
             setSaving(true)
             const token = localStorage.getItem('token')
             if (!token) {
-                alert('Please log in first')
+                console.log('Please log in first')
                 return navigate('/login')
             }
             const response = await axios.post(`${import.meta.env.VITE_BACK_END_SERVER_URL}/auth/changePassword`, {
@@ -35,10 +35,10 @@ const ChangePasswordForm = () => {
                     'Content-Type': 'application/json' 
                 }
             })
-            alert('Password changed successfully')
+            console.log('Password changed successfully')
             navigate('/profile')
         } catch (error) {
-            alert(error.response?.data?.message || 'Failed to change password')
+            console.log(error.response?.data?.message || 'Failed to change password')
         } 
     }
     return (

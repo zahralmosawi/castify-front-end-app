@@ -46,7 +46,7 @@ function EditBoard() {
 
                 setAllPodcasts(podcastsRes.data);
             } catch (error) {
-                alert(error.response?.data?.error || "Failed to load board.");
+                console.log(error.response?.data?.error || "Failed to load board.");
             }
         }
 
@@ -81,10 +81,10 @@ function EditBoard() {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
-            alert('Board updated');
+            console.log('Board updated');
             navigate(`/boards/${id}`);
         } catch (error) {
-            alert(error.response?.data?.error || "Failed to update board.");
+            console.log(error.response?.data?.error || "Failed to update board.");
         }
     }
 

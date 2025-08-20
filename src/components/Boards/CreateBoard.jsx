@@ -63,7 +63,7 @@ function CreateBoard() {
 
             navigate('/profile');
         } catch (error) {
-            alert(error.response?.data?.error || "Board creation failed");
+            console.log(error.response?.data?.error || "Board creation failed");
         }
     }
 

@@ -11,7 +11,7 @@ function DeleteBoardButton({boardId}) {
             await axios.delete(`${import.meta.env.VITE_BACK_END_SERVER_URL}/boards/${boardId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            alert('Board deleted'); //
+            console.log('Board deleted'); //
             navigate('/profile');
         } catch (error) {
             console.log(error)
