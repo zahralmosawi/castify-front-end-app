@@ -1,3 +1,4 @@
+import './Home.css'
 import { useEffect, useState } from 'react';
 import PodcastList from '../PodcastList/PodcastList';
 
@@ -9,19 +10,19 @@ function Home() {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-    async function getPodcasts() {
-        const token = localStorage.getItem('token');
-        const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`, {
-            headers: token ? { Authorization: `Bearer ${token}` } : {}
-        });
+        async function getPodcasts() {
+            const token = localStorage.getItem('token');
+            const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/podcasts`, {
+                headers: token ? { Authorization: `Bearer ${token}` } : {}
+            });
 
-        const data = await res.json();
-        setPodcasts(data);
-        setFeatured(data.slice(0, 3));
+            const data = await res.json();
+            setPodcasts(data);
+            setFeatured(data.slice(0, 3));
 
-        const progress = JSON.parse(localStorage.getItem('podcastProgress') || '{}');
-        const continueList = data.filter(podcast => progress[podcast._id]);
-        setContinueListening(continueList);
+            const progress = JSON.parse(localStorage.getItem('podcastProgress') || '{}');
+            const continueList = data.filter(podcast => progress[podcast._id]);
+            setContinueListening(continueList);
         }
         getPodcasts();
     }, []);
@@ -31,25 +32,37 @@ function Home() {
     );
 
     return (
-        <>
-        <br/><br/>
-            <input type='text' placeholder='Search Podcasts' value={search} onChange={event => setSearch(event.target.value)} />
+        <div className="container">
+            <br/><br/>
+            <input
+                type='text'
+                className="searchInput"
+                placeholder='Search Podcasts'
+                value={search}
+                onChange={event => setSearch(event.target.value)}
+            />
 
             {search.trim() ? (
                 <PodcastList boardPodcasts={filteredPodcasts} />
             ) : (
                 <>
-                    <h2>Featured</h2>
-                    <PodcastList boardPodcasts={featured} />
+                    <div className="section">
+                        <div className="sectionTitle">Featured</div>
+                        <PodcastList boardPodcasts={featured} />
+                    </div>
 
-                    <h2>Continue Listening</h2>
-                    <PodcastList boardPodcasts={continueListening} />
+                    <div className="section">
+                        <div className="sectionTitle">Continue Listening</div>
+                        <PodcastList boardPodcasts={continueListening} />
+                    </div>
 
-                    <h2>All Podcasts</h2>
-                    <PodcastList boardPodcasts={filteredPodcasts} /> 
+                    <div className="section">
+                        <div className="sectionTitle">All Podcasts</div>
+                        <PodcastList boardPodcasts={filteredPodcasts} />
+                    </div>
                 </>
             )}
-        </>
+        </div>
     )
 }
 

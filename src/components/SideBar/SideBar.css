@@ -18,3 +18,13 @@
 .navbar a:hover {
     color: #ff4dc1;
 }
+
+.navbar .logoutLink {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 1rem;
+}
+
+.logoutLink {
+    margin-bottom: 2rem;
+}
