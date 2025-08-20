@@ -1,3 +1,4 @@
+import './CreateBoard.css';
 import { useState, useEffect, use} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -67,31 +68,50 @@ function CreateBoard() {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+        <div className='container'>
+            <form className="create-board-form" onSubmit={handleSubmit}>
                 <h2>Create New Board</h2>
 
-                <input name="name" placeholder="Board Name" onChange={handleChange} value={form.name} required />
-                <textarea name="description" placeholder="Description" onChange={handleChange} value={form.description} />
-                <label>Public</label>
-                <input type="checkbox" name="isPublic" onChange={handleChange} checked={form.isPublic} />
-                <input name="tags" placeholder="Tags" onChange={handleChange} value={form.tags} />
+                <div className="form-group">
+                    <label htmlFor="name">Board Name</label>
+                    <input name="name" placeholder="Board Name" onChange={handleChange} value={form.name} required />
+                </div>
 
-                <label>Select Podcast</label>
-                <ul>
+                <div className="form-group">
+                    <label htmlFor="description">Description</label>
+                    <textarea name="description" placeholder="Description" onChange={handleChange} value={form.description} />
+                </div>
+
+                <div className="form-group inline">
+                    <label htmlFor="isPublic">Make Board Public</label>
+                    <input type="checkbox" name="isPublic" onChange={handleChange} checked={form.isPublic} />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="tags">Tags</label>
+                    <input name="tags" placeholder="technology, design, news" onChange={handleChange} value={form.tags} />
+                </div>
+                
+                <div className="form-group">
+                    <label>Select Podcast</label>
+                    <ul className="podcast-list">
                     {podcasts.map(podcast => (
-                        <li key={podcast._id}>
-                            <label>
+                        <li key={podcast._id} className="podcast-item">
+                            <label className="podcast-label">
                                 <input type="checkbox" checked={selectedPodcast.includes(podcast._id)} onChange={()=>handlePodcastSelect(podcast._id)}/>
                                 <img src={podcast.podcastImage} alt={podcast.title} width="50"/> {podcast.title}
                             </label>
                         </li>
                     ))}
                 </ul>
+                </div>
 
-                <button type="submit">Create Board</button>
+                
+                
+
+                <button type="submit" className="submit-btn">Create Board</button>
             </form>
-        </>
+        </div>
     )
 }
 
