@@ -1,0 +1,49 @@
+.board-details-container {
+  width: 100%;
+  margin-left: 0;
+  padding: 2rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.board-details-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+.board-details-meta {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.board-details-description {
+  font-size: 1.15rem;
+  color: #444;
+  margin-bottom: 24px;
+  max-width: 600px;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.board-details-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.board-details-actions button {
+  border-color: #8f296d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.board-details-actions button:hover {
+  background: #fc8181;
+}
