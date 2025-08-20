@@ -36,6 +36,7 @@ const PodcastDetails = () => {
             {
                 podcast.audio_url?.url && (
                     <audio controls src={podcast.audio_url.url} 
+                        onPlay={() => playPodcast(podcast)}
                         onTimeUpdate={event => {
                             const currentTime = event.target.currentTime;
                             const duration = event.target.duration;
@@ -53,9 +54,6 @@ const PodcastDetails = () => {
                     ></audio>
                 )
             }
-            <button onClick={handlePlay}>
-                {isPlaying && currentPodcast?.id === podcast.id ? 'Pause' : 'Play'}
-            </button>
         </div>
     )
 }
