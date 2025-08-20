@@ -17,7 +17,6 @@ const SideBar = ({showAuthLinks, onLogout}) => {
             (
                 <>
                 <div className='navbar'>
-                    <Link to='/podcasts'> Home </Link>
                     <Link to='/'> Explore </Link>
                     <Link to='/profile'> Profile </Link>
 

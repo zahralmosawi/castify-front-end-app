@@ -17,7 +17,7 @@ import EditBoard from './components/EditBoard/EditBoard';
 import ChangePasswordForm from './components/ChangePasswordForm/ChangePasswordForm.jsx'
 import { PodcastPlayingProvider } from './Contexts/PodcastPlayingContext'
 import PlayingBottom from './components/PlayingBottom/PlayingBottom.jsx'
-import Home from './components/Home/Home';
+import Home from './components/Home/Home'
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -45,8 +45,7 @@ function App() {
         <div style={{marginLeft: token ? '180px' : '0', flex: 1}}>
         <Routes>
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
-          <Route path="/signup" element={<SignupForm />} />
-          <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />  
+          <Route path="/signup" element={<SignupForm />} /> 
           <Route path="/podcasts/:id" element={<ProtectedRoute><PodcastDetails /></ProtectedRoute>} />
           <Route path="/podcasts" element={<ProtectedRoute><PodcastList /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
