@@ -43,8 +43,8 @@ const ChangePasswordForm = () => {
     }
     return (
     <div className="pass-constainer">
+      <h2>Change Password</h2>
       <form onSubmit={handleSubmit} className="pass-form" >
-        <h2>Change Password</h2>
 
         <div className="form-group">
         <input className="pass-input" type="password" placeholder="Current Password" id="currentPassword" name="currentPassword" onChange={handleChange} required/>
