@@ -5,33 +5,33 @@ A modern podcast listening app built with React. Users can manage boards, browse
 
 ## App Screenshots
 ## Signup
-[Signup](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734099/Signup_nwaqd8.png)
+![Signup](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734099/Signup_nwaqd8.png)
 
 ## Login
-[Login](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/Login_yltv48.png)
+![Login](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/Login_yltv48.png)
 
 ## Explore 
-[Explore](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734099/Explore_hra4ri.png)
+![Explore](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734099/Explore_hra4ri.png)
 
 ## Podcast Details
-[PodcastDetails](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734099/PodcastDetails_p9hfeg.png)
+![PodcastDetails](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734099/PodcastDetails_p9hfeg.png)
 
 ## User Profile
-[UserProfile](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734100/Profile_xq7ri6.png)
+![UserProfile](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734100/Profile_xq7ri6.png)
 
 ## Edit Profile
-[EditProfile](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/EditProfile_z750ve.png)
+![EditProfile](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/EditProfile_z750ve.png)
 
 ## Change Password
 
 ## Create New Board
-[CreateBoard](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/CreateBoard_a12ctb.png)
+![CreateBoard](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/CreateBoard_a12ctb.png)
 
 ## Board Details
-[BoardDetails](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734099/BoardDetails_luz1hi.png)
+![BoardDetails](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734099/BoardDetails_luz1hi.png)
 
 ## Edit Board
-[EditBoard](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/EditBoard_zrr8ij.png)
+![EditBoard](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/EditBoard_zrr8ij.png)
 
 ## Tech Stack
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black)
