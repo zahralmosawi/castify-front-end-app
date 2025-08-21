@@ -23,6 +23,7 @@ A modern podcast listening app built with React. Users can manage boards, browse
 ![EditProfile](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/EditProfile_z750ve.png)
 
 ## Change Password
+![ChangePassword](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755747354/Screenshot_2025-08-21_063419_bp61gq.png)
 
 ## Create New Board
 ![CreateBoard](https://res.cloudinary.com/dvhwvkip4/image/upload/v1755734098/CreateBoard_a12ctb.png)
