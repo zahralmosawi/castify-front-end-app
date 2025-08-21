@@ -52,7 +52,7 @@ VITE_BACK_END_SERVER_URL=http://localhost:3000
 npm run dev
 
 ## Future Enhancements
-- Public Profiles: Allow users to make their profile public so others can view their boards and listen history.
-- Podcast API Integration: Retrieve real podcast data from a public API instead of seeding it manually in the DB.
-- Mobile-Friendly-Improvements: Enhance responsive design and mobile interactivity for smaller devices.
-- Settings Panel: Add user options like changing avatar, toggling dark mode, and managing preferences.
+- **Public Profiles:** Allow users to make their profile public so others can view their boards and listen history.
+- **Podcast API Integration:** Retrieve real podcast data from a public API instead of seeding it manually in the DB.
+- **Mobile-Friendly-Improvements:** Enhance responsive design and mobile interactivity for smaller devices.
+- **Settings Panel:** Add user options like changing avatar, toggling dark mode, and managing preferences.
